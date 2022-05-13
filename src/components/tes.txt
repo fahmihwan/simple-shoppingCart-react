@@ -1,0 +1,58 @@
+const [show, setShow] = useState(false);
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+
+
+import React from 'react'
+
+const Untitled-1 = () => {
+  return (
+    <Button variant="primary" onClick={handleShow}>
+    Launch demo modal
+</Button>
+
+<Modal show={show} onHide={handleClose} size="sm" style={{
+    marginTop: "130px",
+}}>
+    <Modal.Header closeButton>
+        <Modal.Title style={{
+            fontSize: "15px"
+        }}>Update Quantity</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+        <Form.Group className='d-flex justify-content-center' >
+            {/* <Form.Control type="text" onChange={this.handleChange} value={this.state.name} placeholder="name input" /> */}
+            <Button className="rounded-pill me-2" variant="danger" style={{
+                width: "30px",
+                height: "30px",
+                padding: "0px",
+            }}>+</Button>
+            <Form.Control type="text" placeholder="name input"
+                style={{ width: "50px", border: "none" }}
+                value="10" />
+            <Button className="rounded-pill" variant="danger" style={{
+                width: "30px",
+                height: "30px",
+                padding: "0px",
+            }}>-</Button>
+        </Form.Group>
+    </Modal.Body>
+    <Modal.Footer>
+        <Button variant="secondary" size="sm" style={{
+            width: "47%",
+        }} onClick={handleClose}>
+            Cancel
+        </Button>
+        <Button variant="danger" size="sm" style={{
+            width: "47%",
+        }}
+            onClick={handleClose}
+        >
+            Save
+        </Button>
+    </Modal.Footer>
+</Modal>
+  )
+}
+
+export default Untitled-1
