@@ -4,7 +4,6 @@ import { Button, Form, Modal } from 'react-bootstrap'
 const ModalKeranjang = (props) => {
     const { show, handleClose, onUpdate, currentQty, saveModal, cart } = props;
 
-
     const buttonStyle = {
         width: "30px",
         height: "30px",

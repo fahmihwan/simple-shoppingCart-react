@@ -1,7 +1,9 @@
 import React from 'react'
 
 export const Price = (props) => {
-    const { price } = props
+    const { subTotal, taxPrice, totalPrice } = props
+
+
     return (
         <>
             <div className="d-flex bd-highlight ">
@@ -9,7 +11,7 @@ export const Price = (props) => {
                     <p >Sub Total </p>
                 </div>
                 <div className=" bd-highlight">
-                    <p>Rp.{price.subTotal}</p>
+                    <p>Rp.{subTotal}</p>
                 </div>
             </div >
             <div className="d-flex bd-highlight " >
@@ -17,7 +19,7 @@ export const Price = (props) => {
                     <p >Tax Fee </p>
                 </div >
                 <div className=" bd-highlight" >
-                    <p>Rp.{price.tax}</p>
+                    <p>Rp.{taxPrice}</p>
                 </div >
             </div >
             <div className="d-flex bd-highlight " >
@@ -25,9 +27,32 @@ export const Price = (props) => {
                     <p >Total </p>
                 </div >
                 <div className=" bd-highlight" >
-                    <p>Rp.{price.total}</p>
+                    <p>Rp.{totalPrice}</p>
                 </div >
             </div >
+            {/* 
+            <div className="d-flex bd-highlight ">
+                <div className="me-auto bd-highlight">
+                    <p >Sub Total </p>
+                </div>
+                <div className=" bd-highlight">
+                    <p>Rp.0</p>
+                </div>
+            </div >
+            <div className="d-flex bd-highlight " >
+                <div className="me-auto bd-highlight" >
+                    <p >Tax Fee </p>
+                </div >
+                <div className=" bd-highlight" >
+                </div >
+            </div >
+            <div className="d-flex bd-highlight " >
+                <div className="me-auto bd-highlight" >
+                    <p >Total </p>
+                </div >
+                <div className=" bd-highlight" >
+                </div >
+            </div > */}
         </>
     )
 }

@@ -10,11 +10,10 @@ const Body = (props) => {
     const { api } = props;
     const [cartItems, setCartItems] = useState([]);
 
-    const [price, setPrice] = useState({
-        subTotal: 0,
-        tax: 0,
-        total: 0
-    })
+    const subTotal = cartItems.reduce((a, c) => a + c.harga * c.qty, 0)
+    const taxPrice = subTotal * 0.1
+    const totalPrice = subTotal + taxPrice
+
 
     const onAdd = (menu) => {
         const exist = cartItems.find(x => x.id === menu.id)
@@ -32,7 +31,6 @@ const Body = (props) => {
         const index = arr.indexOf(cart)
         arr.splice(index, 1);
         setCartItems(arr);
-
     }
 
     return (
@@ -47,13 +45,13 @@ const Body = (props) => {
                 </div>
                 <div className='col-md-3 2 border-left cart' >
                     <div style={{ position: 'sticky', top: 0 }}>
-                        <div className='row text-center py-3 '>
-                            <h3>Cart</h3>
+                        <div className='row text-center pt-3 '>
+                            <p style={{ fontSize: "25px" }}>Cart</p>
                         </div >
-                        {cartItems.length === 0 && <h1 className='text-danger'>Cart Empty</h1>}
 
-                        <div className='row px-2'>
-                            <ul className="list-group " >
+                        <div className='row px-2 list-group'>
+                            {cartItems.length === 0 && <h5 className='text-danger text-center mt-5'>Keranjangmu masih kosong</h5>}
+                            <ul >
                                 {cartItems.map((x) => {
                                     return (<Cart onAdd={onAdd}
                                         onRemove={onRemove}
@@ -66,16 +64,19 @@ const Body = (props) => {
                                 }
                             </ul>
                         </div>
-                        <hr className='mt-5' />
+                        <hr className='' />
                         <Price
-                            price={price}
+                            subTotal={subTotal}
+                            taxPrice={taxPrice}
+                            totalPrice={totalPrice}
                         />
-                        <div className='row px-2 mt-5' >
 
+                        <div className='row px-2 mt-2' >
                             <button type="button" className="btn btn-outline-danger mb-2">Vouchers & Points</button>
                             <button type="button" className="btn btn-danger mb-2">Checkout</button>
                         </div>
                         <p className='text-muted text-center mt-4'>Pizza Hut Madiun</p>
+
                     </div>
                 </div>
             </div>
