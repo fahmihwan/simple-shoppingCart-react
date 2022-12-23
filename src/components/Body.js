@@ -4,10 +4,10 @@ import React, { useState } from 'react'
 import Cart from './Cart'
 import Menu from './Menu'
 import { Price } from './Price';
+import api from './db.json'
 
+const Body = () => {
 
-const Body = (props) => {
-    const { api } = props;
     const [cartItems, setCartItems] = useState([]);
 
     const subTotal = cartItems.reduce((a, c) => a + c.harga * c.qty, 0)
@@ -37,7 +37,7 @@ const Body = (props) => {
         <div className='container-fluid bg-light'>
             <div className='row'>
                 <div className='col-md-9  d-flex flex-wrap'  >
-                    {api.map((e) => {
+                    {api.menu.map((e) => {
                         return (
                             <Menu onAdd={onAdd} key={e.id} menu={e} ></Menu>
                         )
